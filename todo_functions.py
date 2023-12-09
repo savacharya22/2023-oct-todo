@@ -16,6 +16,18 @@ def add_todo(file_name):
 def remove_todo(file_name):
     print("remove to do")
     
+    todo_name = input("Enter a to do you want to remove: ")
+    
+    todo_lists = []
+    with open(file_name, "r") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if (todo_name != row[0]):
+                todo_lists.append(row)
+    with open(file_name, "w") as f:
+        writer = csv.writer(f)
+        writer.writerows(todo_lists)
+    
     
 
 
